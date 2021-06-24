@@ -1,0 +1,37 @@
+{
+  "name": "create-ol-app",
+  "version": "1.0.0",
+  "description": "Initialize a new OpenLayers application",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "eslint src"
+  },
+  "bin": {
+    "create-ol-app": "src/main.js"
+  },
+  "keywords": [
+    "openlayers",
+    "ol",
+    "map",
+    "mapping"
+  ],
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.14.7",
+    "eslint": "^7.29.0",
+    "eslint-config-openlayers": "^15.0.0"
+  },
+  "eslintConfig": {
+    "extends": "openlayers",
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false
+    }
+  },
+  "dependencies": {
+    "commander": "^7.2.0",
+    "degit": "^2.8.4",
+    "fs-extra": "^10.0.0",
+    "validate-npm-package-name": "^3.0.0"
+  }
+}
