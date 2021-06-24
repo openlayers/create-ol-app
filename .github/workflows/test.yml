@@ -1,0 +1,52 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  CI: true
+
+jobs:
+  run:
+    name: Node ${{ matrix.node }} / ${{ matrix.platform }}
+    runs-on: ${{ matrix.platform }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        node:
+          - 12
+          - 14
+          - 16
+
+    steps:
+      - name: Set git to use LF
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set Node.js version
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: node --version
+      - run: npm --version
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
