@@ -4,11 +4,16 @@
   "description": "Initialize a new OpenLayers application",
   "main": "src/main.js",
   "scripts": {
-    "test": "eslint src"
+    "lint": "eslint src test",
+    "pretest": "npm run lint",
+    "test": "mocha --recursive test"
   },
   "bin": {
     "create-ol-app": "src/main.js"
   },
+  "files": [
+    "src/"
+  ],
   "keywords": [
     "openlayers",
     "ol",
@@ -17,15 +22,14 @@
   ],
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "@babel/eslint-parser": "^7.14.7",
     "eslint": "^7.29.0",
-    "eslint-config-openlayers": "^15.0.0"
+    "eslint-config-openlayers": "^15.1.0",
+    "mocha": "^9.0.1"
   },
   "eslintConfig": {
     "extends": "openlayers",
-    "parser": "@babel/eslint-parser",
     "parserOptions": {
-      "requireConfigFile": false
+      "ecmaVersion": 2017
     }
   },
   "dependencies": {

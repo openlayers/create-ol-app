@@ -7,6 +7,10 @@ const validatePackageName = require('validate-npm-package-name');
 const fse = require('fs-extra');
 const {spawn} = require('child_process');
 
+// must be a corresponding openlayers/ol-<template> project, first is default
+const templates = ['parcel', 'esbuild', 'webpack', 'rollup'];
+exports.templates = templates;
+
 async function main(args) {
   const {projectDir, options} = parseArgs(args);
   const packageName = path.basename(projectDir);
@@ -19,17 +23,18 @@ async function main(args) {
 
   if (!valid) {
     const issues = (errors || []).concat(warnings || []);
-    fatal(
-      `Invalid package name '${packageName}'\n${issues.map(
-        (issue) => '\n * ' + issue
-      )}`
+    process.stderr.write(
+      `\nPackage name rules:\n${issues.map((issue) => '\n * ' + issue)}\n`
     );
+    throw new Error(`Invalid package name: ${packageName}`);
   }
 
   await cloneTemplate(projectDir, options.template);
   await updatePackageJson(projectDir, packageName);
   await installDependencies(projectDir);
 }
+
+exports.main = main;
 
 function parseArgs(args) {
   let projectDir;
@@ -40,8 +45,8 @@ function parseArgs(args) {
     .arguments('[project-directory]')
     .addOption(
       new Option('-t, --template <name>', 'project template name')
-        .default('parcel')
-        .choices(['parcel', 'esbuild', 'parcel', 'rollup'])
+        .default(templates[0])
+        .choices(templates)
     )
     .usage('[project-directory] [options]')
     .action((dir) => {
@@ -67,7 +72,12 @@ async function updatePackageJson(dir, packageName) {
 
 function installDependencies(dir) {
   return new Promise((resolve, reject) => {
-    const child = spawn('npm', ['install'], {cwd: dir, stdio: 'inherit'});
+    const child = spawn('npm', ['ci'], {
+      cwd: dir,
+      stdio: 'inherit',
+      shell: true,
+    });
+
     child.on('close', (code) => {
       if (code !== 0) {
         reject(new Error('npm install failed'));
@@ -78,10 +88,8 @@ function installDependencies(dir) {
   });
 }
 
-function fatal(message) {
-  process.stderr.write(`\n${message}\n\n`, () => process.exit(1));
-}
-
 if (require.main === module) {
-  main(process.argv).catch((error) => fatal(error.message));
+  main(process.argv).catch((error) =>
+    process.stderr.write(`\n${error.message}\n`, () => process.exit(1))
+  );
 }
