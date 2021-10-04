@@ -8,7 +8,7 @@ const fse = require('fs-extra');
 const {spawn} = require('child_process');
 
 // must be a corresponding openlayers/ol-<template> project, first is default
-const templates = ['parcel', 'esbuild', 'webpack', 'rollup'];
+const templates = ['parcel', 'esbuild', 'webpack', 'rollup', 'vite'];
 exports.templates = templates;
 
 async function main(args) {
