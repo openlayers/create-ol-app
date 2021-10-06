@@ -1,6 +1,6 @@
 # create-ol-app
 
-The `create-ol-app` program sets up a project directory with the dependencies required for developing an OpenLayers application.  The program requires `npx`, distributed with [Node](https://nodejs.org/) (at least version 12).
+The `create-ol-app` program sets up a project directory with the dependencies required for developing an OpenLayers application.  The program requires `npx`, distributed with [Node](https://nodejs.org/) (at least version 12), and [`git`](https://github.com/git-guides/install-git).
 
 Using `create-ol-app` saves you from having to set up or configure tools like webpack or Parcel.  After setting up a new OpenLayers application, you can proceed with configuring the development environment to your liking – the `create-ol-app` program sets up the required tools, but doesn't lock you in to any specific configuration.
 
@@ -9,6 +9,8 @@ Using `create-ol-app` saves you from having to set up or configure tools like we
 To create a new OpenLayers application, choose a name for your application (`my-app` below) and run the following:
 
     npx create-ol-app my-app
+
+*🐛  If you get an error like "could not find commit hash" when running `create-ol-app`, make sure that you have [`git` installed](https://github.com/git-guides/install-git)*.
 
 This will create a new directory called `my-app` (choose a different name if you like) and install the dependencies for OpenLayers application development.  By default, [Parcel](https://www.npmjs.com/package/parcel) is used as a bundler.  See below for other options.
 
