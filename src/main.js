@@ -13,7 +13,7 @@ exports.templates = templates;
 
 async function main(args) {
   const {projectDir, options} = parseArgs(args);
-  const packageName = path.basename(projectDir);
+  const packageName = path.basename(projectDir).toLowerCase();
 
   const {
     validForNewPackages: valid,
