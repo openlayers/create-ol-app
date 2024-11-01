@@ -33,6 +33,6 @@
     "commander": "^8.2.0",
     "degit": "^2.8.4",
     "fs-extra": "^11.2.0",
-    "validate-npm-package-name": "^3.0.0"
+    "validate-npm-package-name": "^6.0.0"
   }
 }
