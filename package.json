@@ -22,8 +22,8 @@
   ],
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-openlayers": "^16.0.1",
+    "eslint": "^8.57.1",
+    "eslint-config-openlayers": "^19.0.0",
     "mocha": "^9.1.2"
   },
   "eslintConfig": {
@@ -32,7 +32,7 @@
   "dependencies": {
     "commander": "^8.2.0",
     "degit": "^2.8.4",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^11.2.0",
     "validate-npm-package-name": "^3.0.0"
   }
 }

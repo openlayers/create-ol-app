@@ -34,7 +34,7 @@ describe('create-ol-app', () => {
     await main(['node', 'create-ol-app', projectName]);
 
     const packageJson = await fse.readJson(
-      path.join(projectName, 'package.json')
+      path.join(projectName, 'package.json'),
     );
 
     assert.strictEqual(packageJson.name, projectName);
@@ -53,7 +53,7 @@ describe('create-ol-app', () => {
       ]);
 
       const packageJson = await fse.readJson(
-        path.join(projectName, 'package.json')
+        path.join(projectName, 'package.json'),
       );
 
       assert.strictEqual(packageJson.name, projectName);
