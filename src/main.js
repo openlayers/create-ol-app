@@ -24,7 +24,7 @@ async function main(args) {
   if (!valid) {
     const issues = (errors || []).concat(warnings || []);
     process.stderr.write(
-      `\nPackage name rules:\n${issues.map((issue) => '\n * ' + issue)}\n`
+      `\nPackage name rules:\n${issues.map((issue) => '\n * ' + issue)}\n`,
     );
     throw new Error(`Invalid package name: ${packageName}`);
   }
@@ -46,7 +46,7 @@ function parseArgs(args) {
     .addOption(
       new Option('-t, --template <name>', 'project template name')
         .default(templates[0])
-        .choices(templates)
+        .choices(templates),
     )
     .usage('[project-directory] [options]')
     .action((dir) => {
@@ -90,6 +90,6 @@ function installDependencies(dir) {
 
 if (require.main === module) {
   main(process.argv).catch((error) =>
-    process.stderr.write(`\n${error.message}\n`, () => process.exit(1))
+    process.stderr.write(`\n${error.message}\n`, () => process.exit(1)),
   );
 }
