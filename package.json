@@ -22,7 +22,7 @@
   ],
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "eslint": "^8.57.1",
+    "eslint": "^9.13.0",
     "eslint-config-openlayers": "^19.0.0",
     "mocha": "^9.1.2"
   },
