@@ -1,15 +1,14 @@
 #!/usr/bin/env node
+const {spawn} = require('child_process');
 const path = require('path');
 const {Command, Option} = require('commander');
-const packageJson = require('../package.json');
 const degit = require('degit');
-const validatePackageName = require('validate-npm-package-name');
 const fse = require('fs-extra');
-const {spawn} = require('child_process');
+const validatePackageName = require('validate-npm-package-name');
+const packageJson = require('../package.json');
 
 // must be a corresponding openlayers/ol-<template> project, first is default
 const templates = ['vite', 'esbuild', 'webpack', 'rollup', 'parcel'];
-exports.templates = templates;
 
 async function main(args) {
   const {projectDir, options} = parseArgs(args);
@@ -33,8 +32,6 @@ async function main(args) {
   await updatePackageJson(projectDir, packageName);
   await installDependencies(projectDir);
 }
-
-exports.main = main;
 
 function parseArgs(args) {
   let projectDir;
@@ -93,3 +90,6 @@ if (require.main === module) {
     process.stderr.write(`\n${error.message}\n`, () => process.exit(1)),
   );
 }
+
+exports.main = main;
+exports.templates = templates;

@@ -1,8 +1,9 @@
 /* eslint-env mocha */
 const assert = require('assert');
-const fse = require('fs-extra');
 const os = require('os');
 const path = require('path');
+const fse = require('fs-extra');
+const {afterEach, beforeEach, describe, it} = require('mocha');
 const {main, templates} = require('../src/main.js');
 
 const installTimeout = 5 * 60 * 1000;
