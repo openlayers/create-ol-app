@@ -24,7 +24,7 @@
   "devDependencies": {
     "eslint": "^9.16.0",
     "eslint-config-openlayers": "^20.0.0",
-    "mocha": "^11.0.1"
+    "mocha": "^12.0.1"
   },
   "dependencies": {
     "commander": "^14.0.0",
