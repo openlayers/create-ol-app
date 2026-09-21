@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "commander": "^14.0.0",
-    "degit": "^2.8.4",
+    "degit": "^3.10.0",
     "fs-extra": "^11.2.0",
     "validate-npm-package-name": "^6.0.0"
   }
