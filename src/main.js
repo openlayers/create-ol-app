@@ -69,7 +69,7 @@ async function updatePackageJson(dir, packageName) {
 
 function installDependencies(dir) {
   return new Promise((resolve, reject) => {
-    const child = spawn('npm', ['ci'], {
+    const child = spawn('npm ci', {
       cwd: dir,
       stdio: 'inherit',
       shell: true,
